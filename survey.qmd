@@ -1,0 +1,137 @@
+---
+# General Settings
+format: html
+echo: false
+warning: false
+
+# Theme Settings
+theme: default
+barposition: top
+footer-left: "Made with [surveydown](https://surveydown.org)"
+footer-right: '[<i class="bi bi-github"></i> Source Code](https://github.com/surveydown-dev/template_default)'
+
+# Survey Settings
+use-cookies: false
+auto-scroll: false
+rate-survey: false
+system-language: en
+highlight-unanswered: true
+highlight-color: blue
+capture-metadata: true
+all-questions-required: false
+---
+
+```{r}
+library(surveydown)
+```
+
+::: {.sd_page id=welcome}
+
+# Welcome to the Pizza Survey!
+
+```{r}
+
+sd_question(
+  type  = 'textarea',
+  id    = 'Location',
+  label = 'Name of the Pizza location:'
+)
+
+sd_question(
+  type   = 'select',
+  id     = 'style',
+  label  = "What style of pizza?",
+  option = c(
+    "NY Style: Large, wide, thin crust; foldable slices; moderate cheese and sauce" = "ny",
+    "Thick/Deep dish" = "deep_dish",
+    "Apizza: Very thin, slightly chewy, charred crust" = "apizza",
+    "Pan: Medium-thick, uniform crust, not charred" = "pan",
+    "Other" = 'other'
+  )
+)
+
+sd_question(
+  type   = 'mc',
+  id     = 'how_hungry',
+  label  = "Rank how hungry you were before pizza.",
+  option = c(
+    "Not at all hungry" = "not_hungry",
+    "Less hungry" = "less_hungry",
+    "Neutral" = "neutral",
+    "Hungry" = "hungry",
+    "Very hungry" = "very_hungry"
+  )
+)
+
+sd_question(
+  type   = 'matrix',
+  id     = 'likert_etc',
+  label  = "Please rank:",
+  option = c(
+    "1: worst ever" = "one_none",
+    "2"             = 'two_oo_ten',
+    "3"             = 'three_oo_ten',
+    "4"             = 'four_oo_ten',
+    "5"             = "five_oo_ten",
+    "6"             = "six_oo_ten",
+    "7"             = "seven_oo_ten",
+    "8"             = "eight_oo_ten",
+    "9"             = "nine_oo_ten",
+    "10: best ever" = "ten_veryhigh"
+  ),
+  row = c(
+    'Flavor' = 'flavor',
+    'Texture' = 'texture',
+    'Topping quality' = 'topping_quality',
+    'Crust quality' = 'crust_q',
+    'Sauce quality' = 'sauce_q',
+    'Cheese quality' = 'cheese_q',
+    'Overall enjoyment' = 'overall'
+  )
+)
+
+sd_question(
+  type   = 'matrix',
+  id     = 'likert_etc',
+  label  = "Please rank:",
+  option = c(
+    "1: worst ever" = "one_none",
+    "2"             = 'two_oo_ten',
+    "3"             = 'three_oo_ten',
+    "4"             = 'four_oo_ten',
+    "5"             = "five_oo_ten",
+    "6"             = "six_oo_ten",
+    "7"             = "seven_oo_ten",
+    "8"             = "eight_oo_ten",
+    "9"             = "nine_oo_ten",
+    "10: best ever" = "ten_veryhigh"
+  ),
+  row = c(
+    'Value for the money' = 'value',
+    'Ease of ordering' = 'easy'
+  )
+)
+
+sd_question(
+  type   = 'mc',
+  id     = 'would_order_again',
+  label  = "I would order from this location again.",
+  option = c(
+    "Strongly Disagree" = "strong_disagree",
+    "Disagree"          = "disagree",
+    "Neutral"           = "neutral",
+    "Agree"             = "agree",
+    "Strongly Agree"    = "strong_agree"
+  )
+)
+
+sd_question(
+  type  = 'text',
+  id    = 'comments',
+  label = "Share any other thoughts."
+)
+
+sd_close(label = "Submit")
+```
+
+:::
